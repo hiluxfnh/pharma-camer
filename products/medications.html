@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Médicaments - Pharma Camer</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <header>
+        <h1>PHARMA CAMER</h1>
+        <nav>
+            <a href="/public/index.html" class="nav-link">Accueil</a>
+            <a href="products/medications.html" class="nav-link">Médicaments</a>
+            <a href="services/evacuation.html" class="nav-link">Évacuation</a>
+            <a href="announcements.html" class="nav-link">Annonces</a>
+            <div id="auth-section">
+                <span id="user-email"></span>
+                <button id="logout-btn" class="hidden">Déconnexion</button>
+                <a href="auth/login.html" id="login-link">Connexion</a>
+            </div>
+            <div id="cart-counter">🛒 <span>0</span></div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Nos Médicaments</h1>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Rechercher des médicaments...">
+            <button>🔍</button>
+        </div>
+
+        <div class="products-grid" id="productsContainer"></div>
+
+        <script type="module">
+            import { db, collection, onSnapshot } from '../firebase.js';
+            import { updateCart } from '../script.js';
+
+            const productsContainer = document.getElementById('productsContainer');
+            
+            // Real-time products listener
+            onSnapshot(collection(db, "products"), (snapshot) => {
+                productsContainer.innerHTML = '';
+                
+                snapshot.forEach(doc => {
+                    const product = doc.data();
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.innerHTML = `
+                        <h3>${product.name}</h3>
+                        <p class="price">${product.price} FCFA</p>
+                        <p class="description">${product.description}</p>
+                        <button class="add-to-cart" data-id="${doc.id}">Ajouter au panier</button>
+                    `;
+                    productsContainer.appendChild(productCard);
+                });
+            });
+
+            // Add to cart functionality
+            document.addEventListener('click', (e) => {
+                if(e.target.classList.contains('add-to-cart')) {
+                    const productId = e.target.dataset.id;
+                    cart.push(productId);
+                    updateCart();
+                    alert("Produit ajouté au panier!");
+                }
+            });
+        </script>
+    </main>
+</body>
+</html>

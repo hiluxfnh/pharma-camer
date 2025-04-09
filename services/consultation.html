@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultation - Pharma Camer</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <header>
+        <h1>PHARMA CAMER</h1>
+        <nav>
+            <a href="/public/index.html">Accueil</a>
+            <a href="/public/services/evacuation.html">Évacuation</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="consultation-container">
+            <h2>Consultation en Ligne</h2>
+            
+            <div class="doctors-list">
+                <div class="doctor-card">
+                    <h3>Dr. Sophie Dupont</h3>
+                    <p>Généraliste</p>
+                    <button class="book-btn" data-id="doc1">Prendre RDV</button>
+                </div>
+                <!-- Add more doctors -->
+            </div>
+
+            <div class="consultation-form hidden" id="bookingForm">
+                <h3>Formulaire de Rendez-vous</h3>
+                <form id="consultationForm">
+                    <input type="date" id="appointmentDate" required>
+                    <select id="consultationType" required>
+                        <option value="chat">Chat</option>
+                        <option value="video">Appel Vidéo</option>
+                    </select>
+                    <input type="file" id="medicalFiles">
+                    <button type="submit">Confirmer</button>
+                </form>
+            </div>
+        </div>
+
+        <script type="module">
+            import { db, collection, addDoc, auth } from '../firebase.js';
+            
+            document.querySelectorAll('.book-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.getElementById('bookingForm').classList.remove('hidden');
+                });
+            });
+
+            document.getElementById('consultationForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const consultationData = {
+                    doctorId: "doc1",
+                    date: document.getElementById('appointmentDate').value,
+                    type: document.getElementById('consultationType').value,
+                    files: document.getElementById('medicalFiles').files[0]?.name,
+                    userId: auth.currentUser?.uid,
+                    createdAt: new Date()
+                };
+
+                try {
+                    await addDoc(collection(db, "consultations"), consultationData);
+                    alert("Rendez-vous confirmé!");
+                    window.location.href = "/";
+                } catch (error) {
+                    alert("Erreur: " + error.message);
+                }
+            });
+        </script>
+    </main>
+</body>
+</html>

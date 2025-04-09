@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Soins Bébé - Pharma Camer</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <header>
+        <h1>PHARMA CAMER</h1>
+        <nav>
+            <a href="/public/index.html">Accueil</a>
+            <a href="products/medications.html">Médicaments</a>
+            <div id="auth-section"></div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Produits pour Bébé</h1>
+        
+        <div class="products-grid" id="productsContainer"></div>
+
+        <script type="module">
+            import { db, collection, onSnapshot } from '../firebase.js';
+            
+            const productsContainer = document.getElementById('productsContainer');
+            
+            onSnapshot(collection(db, "baby_products"), (snapshot) => {
+                productsContainer.innerHTML = snapshot.docs.map(doc => `
+                    <div class="product-card">
+                        <h3>${doc.data().name}</h3>
+                        <p class="price">${doc.data().price} FCFA</p>
+                        <img src="${doc.data().image}" alt="${doc.data().name}" width="200">
+                        <button class="add-to-cart" data-id="${doc.id}">Ajouter au panier</button>
+                    </div>
+                `).join('');
+            });
+        </script>
+    </main>
+</body>
+</html>

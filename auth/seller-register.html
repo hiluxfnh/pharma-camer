@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription Vendeur - Pharma Camer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>PHARMA CAMER</h1>
+        <nav>
+            <a href="/public/index.html">Accueil</a>
+            <a href="auth/login.html">Connexion</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Inscription Pharmacie</h2>
+            <form id="sellerForm">
+                <div class="form-group">
+                    <label>Nom de la pharmacie:</label>
+                    <input type="text" id="pharmacyName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" id="sellerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Téléphone:</label>
+                    <input type="tel" id="sellerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>Mot de passe:</label>
+                    <input type="password" id="sellerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label>Licence pharmaceutique:</label>
+                    <input type="file" id="licenseFile" accept=".pdf,.doc,.docx" required>
+                </div>
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
+
+        <script type="module">
+            import { auth, createUserWithEmailAndPassword, db, storage, doc, setDoc, ref, uploadBytes } from '../firebase.js';
+            
+            document.getElementById('sellerForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const pharmacyName = document.getElementById('pharmacyName').value;
+                const email = document.getElementById('sellerEmail').value;
+                const phone = document.getElementById('sellerPhone').value;
+                const password = document.getElementById('sellerPassword').value;
+                const licenseFile = document.getElementById('licenseFile').files[0];
+                
+                try {
+                    // Create user
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    
+                    // Upload license
+                    const storageRef = ref(storage, `licenses/${userCredential.user.uid}/${licenseFile.name}`);
+                    await uploadBytes(storageRef, licenseFile);
+                    
+                    // Save seller data
+                    await setDoc(doc(db, "sellers", userCredential.user.uid), {
+                        pharmacyName,
+                        email,
+                        phone,
+                        licenseUrl: storageRef.fullPath,
+                        approved: false,
+                        createdAt: new Date()
+                    });
+                    
+                    alert("Inscription réussie! En attente de validation.");
+                    window.location.href = "/";
+                } catch (error) {
+                    alert("Erreur d'inscription: " + error.message);
+                }
+            });
+        </script>
+    </main>
+</body>
+</html>

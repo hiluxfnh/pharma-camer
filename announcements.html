@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Annonces - Pharma Camer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>PHARMA CAMER</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="/public/announcements.html">Annonces</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="announcements-container">
+            <h2>Annonces Récentes</h2>
+            
+            <div class="recall-notice">
+                <h3>Rappel de Médicaments</h3>
+                <div id="recallList"></div>
+            </div>
+            
+            <div class="pharmacy-list">
+                <h3>Pharmacies Enregistrées</h3>
+                <div id="pharmacyList"></div>
+            </div>
+        </div>
+
+        <script type="module">
+            import { db, collection, onSnapshot } from '../firebase.js';
+            
+            // Fetch recalls
+            onSnapshot(collection(db, "recalls"), (snapshot) => {
+                const recallList = document.getElementById('recallList');
+                recallList.innerHTML = snapshot.docs.map(doc => `
+                    <div class="recall-item">
+                        <h4>${doc.data().title}</h4>
+                        <p>${doc.data().description}</p>
+                        <p class="date">${doc.data().date}</p>
+                    </div>
+                `).join('');
+            });
+
+            // Fetch pharmacies
+            onSnapshot(collection(db, "pharmacies"), (snapshot) => {
+                const pharmacyList = document.getElementById('pharmacyList');
+                pharmacyList.innerHTML = snapshot.docs.map(doc => `
+                    <div class="pharmacy-item">
+                        <h4>${doc.data().name}</h4>
+                        <p>${doc.data().address}</p>
+                    </div>
+                `).join('');
+            });
+        </script>
+    </main>
+</body>
+</html>

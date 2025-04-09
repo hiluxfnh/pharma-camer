@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plateforme officielle de commande de médicaments et services médicaux au Cameroun">
+    <title>Pharma Camer - Santé pour tous</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Bandeau d'urgence -->
+    <div class="emergency-bar">
+        <div class="container">
+            <i class="fas fa-phone-alt"></i>
+            <span>Urgences: 1515 | COVID-19: 1510</span>
+            <div class="lang-switcher">
+                <a href="#fr">FR</a> | <a href="#en">EN</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo">
+                <img src="img/logo.png" alt="Drapeau Cameroun" class="flag">
+                PHARMA CAMER
+            </h1>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i>Accueil</a></li>
+                    <li><a href="products/medications.html"><i class="fas fa-capsules"></i>Médicaments</a></li>
+                    <li><a href="services/evacuation.html"><i class="fas fa-ambulance"></i>Évacuation</a></li>
+                    <li><a href="announcements.html"><i class="fas fa-bullhorn"></i>Alertes</a></li>
+                    <li><a href="traditional.html"><i class="fas fa-leaf"></i>Médecine Traditionnelle</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-panel">
+                <a href="cart.html" class="cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="auth-section">
+                    <a href="auth/login.html" class="btn-login">Connexion</a>
+                    <a href="auth/register.html" class="btn-register">Inscription</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Section Hero -->
+        <section class="hero" aria-label="Services principaux">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Santé accessible pour tout le Cameroun</h2>
+                    <div class="hero-cta">
+                        <a href="products/medications.html" class="cta-primary">
+                            <i class="fas fa-prescription-bottle"></i>
+                            Commander médicaments
+                        </a>
+                        <a href="services/consultation.html" class="cta-secondary">
+                            <i class="fas fa-user-md"></i>
+                            Consultation en ligne
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="img/personel.webp" alt="Professionnels de santé camerounais">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services clés -->
+        <section class="key-services" aria-label="Services clés">
+            <div class="container">
+                <div class="service-card emergency">
+                    <i class="fas fa-ambulance"></i>
+                    <h3>Évacuation Médicale 24h/24</h3>
+                    <p>Service d'urgence disponible dans toutes les régions</p>
+                </div>
+                
+                <div class="service-card delivery">
+                    <i class="fas fa-motorcycle"></i>
+                    <h3>Livraison Express</h3>
+                    <p>Livraison garantie en moins de 4h à Yaoundé et Douala</p>
+                </div>
+
+                <div class="service-card payment">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Paiement Mobile</h3>
+                    <p>MTN Mobile Money • Orange Money • Express Union</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Produits populaires -->
+<section class="popular-products">
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-fire"></i> Produits populaires</h2>
+        <div class="product-grid">
+            <!-- Produit 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/para.jpg" alt="Paracétamol 500mg">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Paracétamol 500mg</h3>
+                    <span class="product-price">1 850 CFA</span>
+                    <button class="cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Commander
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produit 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/ibu.jpg" alt="Ibuprofène 200mg">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Ibuprofène 200mg</h3>
+                    <span class="product-price">5 000 CFA</span>
+                    <button class="cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Commander
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produit 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/amox.avif" alt="Amoxicilline 250mg">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Amoxicilline 250mg</h3>
+                    <span class="product-price">2 600 CFA</span>
+                    <button class="cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Commander
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produit 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/asp.jpg" alt="Aspirine 100mg">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Aspirine 100mg</h3>
+                    <span class="product-price">3 300 CFA</span>
+                    <button class="cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Commander
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+       <!-- Pharmacies de garde -->
+<section class="pharmacy-section">
+    <div class="container">
+        <h2><i class="fas fa-clinic-medical"></i> Pharmacies de garde</h2>
+        <div class="pharmacy-map">
+            <div class="pharmacy-list">
+                <!-- Liste des pharmacies -->
+                <div class="pharmacy-item">
+                    <div class="pharmacy-number">1</div>
+                    <div class="pharmacy-details">
+                        <h3>PHARMACIE FRANÇAISE</h3>
+                        <p>178, avenue Ahmadou AHIDJO<br>BP 195, Yaoundé</p>
+                        <button class="map-button" data-coords="3.8577,11.5187">Voir sur la carte</button>
+                    </div>
+                </div>
+
+                <div class="pharmacy-item">
+                    <div class="pharmacy-number">2</div>
+                    <div class="pharmacy-details">
+                        <h3>Pharmacie du Soleil</h3>
+                        <p>642 AV Ahmadou Ahidjo<br>BP 67, Yaoundé</p>
+                        <button class="map-button" data-coords="3.8586,11.5193">Voir sur la carte</button>
+                    </div>
+                </div>
+
+                <div class="pharmacy-item">
+                    <div class="pharmacy-number">3</div>
+                    <div class="pharmacy-details">
+                        <h3>Pharmacie Mindilé</h3>
+                        <p>Carrefour Obiil<br>BP 111668, Yaoundé</p>
+                        <button class="map-button" data-coords="3.8592,11.5179">Voir sur la carte</button>
+                    </div>
+                </div>
+
+                <div class="pharmacy-item">
+                    <div class="pharmacy-number">4</div>
+                    <div class="pharmacy-details">
+                        <h3>Pharmacie St Martin</h3>
+                        <p>Centre Ville<br>BP 12404, Yaoundé</p>
+                        <button class="map-button" data-coords="3.8571,11.5205">Voir sur la carte</button>
+                    </div>
+                </div>
+
+                <!-- Ajoutez les autres pharmacies de la même manière -->
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3845.742769805529!2d11.518959874974778!3d3.9168037960569486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc8a88ea09b97%3A0x8187ddfbc7cd4a59!2sPharmacie%20D&#39;Emana%2C%20Yaound%C3%A9!5e1!3m2!1sfr!2sru!4v1744237296260!5m2!1sfr!2sru" 
+                        width="600" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Partenariats officiels -->
+        <section class="partners">
+            <div class="container">
+                <h2>En collaboration avec :</h2>
+                <div class="partner-logos">
+                    <img src="img/minsante.avif" alt="Ministère de la Santé">
+                    <img src="img/oms.png" alt="OMS">
+                    <img src="img/hopital.png" alt="Pharmacie Centrale">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#"><i class="fas fa-shipping-fast"></i>Suivi de commande</a></li>
+                    <li><a href="#"><i class="fas fa-clipboard-list"></i>Pharmacies agréées</a></li>
+                    <li><a href="#"><i class="fas fa-book-open"></i>Guide santé</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Légal</h4>
+                <ul>
+                    <li><a href="#"><i class="fas fa-balance-scale"></i>Conditions d'utilisation</a></li>
+                    <li><a href="#"><i class="fas fa-shield-alt"></i>Politique de confidentialité</a></li>
+                    <li><a href="#"><i class="fas fa-certificate"></i>Certifications</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact">
+                <h4>Contact</h4>
+                <p><i class="fas fa-phone"></i> (+237) 242 000 000</p>
+                <p><i class="fas fa-envelope"></i> contact@pharmacamer.cm</p>
+                <p><i class="fas fa-map-marker-alt"></i> Ministère de la Santé, Yaoundé</p>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2024 Pharma Camer - Tous droits réservés
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
