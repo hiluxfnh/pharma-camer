@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- Bandeau d'urgence -->
-    <div class="emergency-bar">
+    <!-- <div class="emergency-bar">
         <div class="container">
             <i class="fas fa-phone-alt"></i>
             <span>Urgences: 1515 | COVID-19: 1510</span>
@@ -18,25 +18,32 @@
                 <a href="#fr">FR</a> | <a href="#en">EN</a>
             </div>
         </div>
-    </div>
-
+    </div> -->
     <header class="main-header">
         <div class="container">
             <h1 class="logo">
                 <img src="img/logo.png" alt="Drapeau Cameroun" class="flag">
                 PHARMA CAMER
             </h1>
-            
+    
+            <!-- Barre de recherche -->
+            <div class="search-container">
+                <input type="text" placeholder="Rechercher médicaments, pharmacies...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+    
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#"><i class="fas fa-home"></i>Accueil</a></li>
-                    <li><a href="products/medications.html"><i class="fas fa-capsules"></i>Médicaments</a></li>
-                    <li><a href="services/evacuation.html"><i class="fas fa-ambulance"></i>Évacuation</a></li>
-                    <li><a href="announcements.html"><i class="fas fa-bullhorn"></i>Alertes</a></li>
-                    <li><a href="traditional.html"><i class="fas fa-leaf"></i>Médecine Traditionnelle</a></li>
+                    <li><a href="#"><i class="fas fa-home"></i><span>Accueil</span></a></li>
+                    <li><a href="products/medications.html"><i class="fas fa-capsules"></i><span>Médicaments</span></a></li>
+                    <li><a href="services/evacuation.html"><i class="fas fa-ambulance"></i><span>Évacuation</span></a></li>
+                    <li><a href="announcements.html"><i class="fas fa-bullhorn"></i><span>Alertes</span></a></li>
+                    <li><a href="traditional.html"><i class="fas fa-leaf"></i><span>Traditionnelle</span></a></li>
                 </ul>
             </nav>
-
+    
             <div class="user-panel">
                 <a href="cart.html" class="cart">
                     <i class="fas fa-shopping-cart"></i>
@@ -47,13 +54,19 @@
                     <a href="auth/register.html" class="btn-register">Inscription</a>
                 </div>
             </div>
+    
+            <!-- Menu hamburger -->
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
     <main>
-        <!-- Section Hero -->
-        <section class="hero" aria-label="Services principaux">
+         <!-- Section Hero avec Carrousel -->
+         <section class="hero" aria-label="Services principaux">
             <div class="container">
+                <!-- Contenu gauche inchangé -->
                 <div class="hero-content">
                     <h2>Santé accessible pour tout le Cameroun</h2>
                     <div class="hero-cta">
@@ -67,8 +80,42 @@
                         </a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <img src="img/personel.webp" alt="Professionnels de santé camerounais">
+
+                <!-- Carrousel à droite -->
+                <div class="hero-carousel">
+                    <div class="carousel-container">
+                        <!-- Slide 1 -->
+                        <div class="carousel-slide active">
+                            <img src="img/cours3.webp" alt="Annonce 1">
+                            <div class="slide-caption">
+                                <h3>Nouveaux horaires</h3>
+                                <p>Pharmacies ouvertes jusqu'à 22h</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="carousel-slide">
+                            <img src="img/cour1.jpg" alt="Annonce 2">
+                            <div class="slide-caption">
+                                <h3>Campagne de vaccination</h3>
+                                <p>Vaccins gratuits disponibles</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="carousel-slide">
+                            <img src="img/cour2.avif" alt="Annonce 2">
+                            <div class="slide-caption">
+                                <h3>Évacuation Médicale 24h/24</h3>
+                                <p>Service d'urgence disponible dans toutes les régions</p>
+                            </div>
+                        </div>
+
+                        <!-- Contrôles -->
+                        <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                        <div class="carousel-dots"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -154,6 +201,21 @@
                 <div class="product-info">
                     <h3 class="product-name">Aspirine 100mg</h3>
                     <span class="product-price">3 300 CFA</span>
+                    <button class="cta-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Commander
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produit 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/ibu.jpg" alt="Ibuprofène 200mg">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Ibuprofène 250mg</h3>
+                    <span class="product-price">6 000 CFA</span>
                     <button class="cta-button">
                         <i class="fas fa-shopping-cart"></i>
                         Commander
@@ -265,11 +327,65 @@
                 <p><i class="fas fa-map-marker-alt"></i> Ministère de la Santé, Yaoundé</p>
             </div>
         </div>
+        
         <div class="copyright">
             © 2024 Pharma Camer - Tous droits réservés
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.main-nav').classList.toggle('active');
+            document.querySelector('.user-panel').classList.toggle('active');
+        });
+        </script>
+
+        <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    let currentIndex = 0;
+    let interval;
+
+    // Create dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.addEventListener('click', () => showSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    // Navigation functions
+    function showSlide(index) {
+        slides[currentIndex].classList.remove('active');
+        dotsContainer.children[currentIndex].classList.remove('active');
+        
+        currentIndex = (index + slides.length) % slides.length;
+        
+        slides[currentIndex].classList.add('active');
+        dotsContainer.children[currentIndex].classList.add('active');
+    }
+
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
+
+    // Controls
+    document.querySelector('.carousel-prev').addEventListener('click', () => showSlide(currentIndex - 1));
+    document.querySelector('.carousel-next').addEventListener('click', nextSlide);
+
+    // Auto-rotate
+    function startInterval() {
+        interval = setInterval(nextSlide, 5000);
+    }
+    
+    startInterval();
+
+    // Pause on hover
+    document.querySelector('.hero-carousel').addEventListener('mouseenter', () => clearInterval(interval));
+    document.querySelector('.hero-carousel').addEventListener('mouseleave', startInterval);
+});
+</script>
+
 </body>
 </html>
